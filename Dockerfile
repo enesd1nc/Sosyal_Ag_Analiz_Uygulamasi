@@ -1,19 +1,19 @@
-# Nginx tabanlı hafif bir image kullan
+# [cite_start]Temel imaj olarak hızlı ve hafif olduğu için Nginx'in alpine versiyonunu seçtim [cite: 1]
 FROM nginx:alpine
 
-# Çalışma dizinini ayarla
+# Dosyalarımızı yükleyeceğimiz yeri ayarlıyoruz
 WORKDIR /usr/share/nginx/html
 
-# Mevcut Nginx içeriğini temizle
+# İçeride kalan gereksiz varsayılan dosyaları bir temizleyelim
 RUN rm -rf ./*
 
-# Proje dosyalarını container'a kopyala
+# [cite_start]Hazırladığımız dosyaları (html, js, css) içeriye aktarıyoruz [cite: 2]
 COPY index.html .
 COPY script.js .
 COPY style.css .
 
-# Port 80'i dışarıya aç
+# Konteynerın 80 portu üzerinden haberleşeceğini not düşüyoruz
 EXPOSE 80
 
-# Nginx'i başlat (varsayılan olarak çalışır)
+# Nginx'i ayağa kaldırıyoruz, sistemin sürekli çalışmasını sağlıyoruz
 CMD ["nginx", "-g", "daemon off;"]
