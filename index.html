@@ -247,9 +247,21 @@
     </div>
 
     <!-- 
-        Projenin tüm JavaScript kodları bu dosyada bulunuyor.
-        Grafik çizimi ve algoritmalar burada çalışıyor.
+        JavaScript modülleri - sırasıyla yükleniyor:
+        1. Models (temel veri sınıfları)
+        2. Services (algoritmalar)
+        3. UI (canvas yönetimi)
+        4. App (uygulama başlatıcı)
     -->
-    <script src="script.js"></script>
+    <!-- Models -->
+    <script src="js/models/Node.js"></script>
+    <script src="js/models/Edge.js"></script>
+    <script src="js/models/Graph.js"></script>
+    <!-- Services -->
+    <script src="js/services/Algorithm.js"></script>
+    <!-- UI -->
+    <script src="js/ui/CanvasManager.js"></script>
+    <!-- App -->
+    <script src="js/app.js"></script>
 </body>
 </html>
