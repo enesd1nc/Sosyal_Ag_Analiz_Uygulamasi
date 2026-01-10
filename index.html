@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <!-- 
+        Sayfada Türkçe karakterlerle ilgili sorun çıkmaması için
+    -->
+    <meta charset="UTF-8">
+
+    <!-- 
+        Bu ayar sayesinde site hem bilgisayarda
+        hem de telefonda düzgün bir şekilde görüntüleniyor.
+    -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- 
+        Tarayıcı sekmesinde görünen başlık.
+        Projenin neyle ilgili olduğunu net şekilde anlatıyor.
+    -->
+    <title>Sosyal Ağ Analizi - Üniversite Projesi</title>
+
+    <!-- 
+        Yazı tipi olarak Inter fontunu kullandım.
+        Hem modern duruyor hem de okunması kolay.
+    -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- 
+        Sayfanın tüm tasarımını ve yerleşimini yöneten
+        CSS dosyasını burada bağlıyorum.
+    -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- 
+        MODAL POPUP
+        Düğüm bilgileri ve detaylı sonuçlar için modal pencere
+    -->
+    <div id="infoModal" class="modal-overlay">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h2 id="modalTitle">Düğüm Bilgileri</h2>
+                <button class="modal-close" id="modalCloseBtn">&times;</button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Modal içeriği JavaScript ile doldurulacak -->
+            </div>
+        </div>
+    </div>
+
+    <!-- 
+        Bu div sayfadaki her şeyi kapsıyor.
+        İçinde iki ana bölüm var:
+        - Sol tarafta butonlar ve bilgiler
+        - Sağ tarafta ise çizim yapılan canvas
+    -->
+    <div class="container">
+
+        <!-- 
+            SOL PANEL
+            Kullanıcının projeyle etkileşime girdiği kısım burası.
+            Düğüm ekleme, algoritma seçme ve sonuçları görme işlemleri burada.
+        -->
+        <div class="left-panel">
+            <h1>Sosyal Ağ Analizi</h1>
+
+            <!-- 
+                Bu bölümde düğümle ilgili işlemler bulunuyor.
+                Kullanıcı ister tek tek düğüm ekleyebilir,
+                ister rastgele bir ağ oluşturabilir.
+            -->
+            <div class="control-section">
+                <h3>Düğüm İşlemleri</h3>
+
+                <!-- 
+                    Bu buton, canvas’a manuel olarak
+                    tek tek düğüm eklemek için kullanılıyor.
+                -->
+                <button id="addNodeBtn" class="btn btn-primary">
+                    <span>➕</span> Düğüm Ekle
+                </button>
+
+                <!-- 
+                    Bu buton, programın otomatik olarak
+                    rastgele düğümler ve bağlantılar oluşturmasını sağlar.
+                -->
+                <button id="generateRandomBtn" class="btn btn-success">
+                    <span>🎲</span> Rastgele Ağ Üret
+                </button>
+
+                <!-- 
+                    Bu butona basıldığında
+                    ekranda bulunan tüm düğüm ve bağlantılar silinir.
+                -->
+                <button id="clearBtn" class="btn btn-danger">
+                    <span>🗑️</span> Temizle
+                </button>
+
+                <!-- 
+                    Bu buton, düğümler arasında kolay bağlantı
+                    kurmak için bağlama modunu başlatır.
+                -->
+                <button id="linkNodesBtn" class="btn btn-link">
+                    <span>🔗</span> Düğümleri Bağla
+                </button>
+
+                <!-- 
+                    Bu buton, düğümler arasındaki bağlantıları 
+                    silmek için silme modunu başlatır.
+                -->
+                <button id="unlinkNodesBtn" class="btn btn-unlink">
+                    <span>✂️</span> Bağlantı Sil
+                </button>
+
+                <!-- 
+                    Bu buton, düğümler hakkında detaylı bilgi 
+                    görüntülemek için bilgi modunu başlatır.
+                -->
+                <button id="nodeInfoBtn" class="btn btn-info-mode">
+                    <span>ℹ️</span> Düğüm Bilgisi
+                </button>
+            </div>
+
+            <!-- 
+                VERİ AKTARIMI BÖLÜMÜ
+                Kullanıcı graf verisini JSON veya CSV olarak
+                dışa/içe aktarabilir.
+            -->
+            <div class="control-section">
+                <h3>Veri Aktarımı</h3>
+
+                <!-- JSON formatında dışa aktarım (komşuluk listesi ile) -->
+                <button id="exportJsonBtn" class="btn btn-export">
+                    <span>📤</span> JSON Dışa Aktar
+                </button>
+
+                <!-- CSV formatında dışa aktarım (komşuluk matrisi ile) -->
+                <button id="exportCsvBtn" class="btn btn-export">
+                    <span>📊</span> CSV Dışa Aktar
+                </button>
+
+                <!-- Dosya yükleme ile içe aktarım -->
+                <label for="importFileInput" class="btn btn-import">
+                    <span>📥</span> Veri İçe Aktar
+                </label>
+                <input type="file" id="importFileInput" accept=".json,.csv" style="display: none;">
+            </div>
+
+            <!-- 
+                Bu bölümde kullanıcı hangi algoritmayı çalıştırmak
+                istediğini seçiyor.
+                Seçim yapılmadan algoritma çalıştırılamıyor.
+            -->
+            <div class="control-section">
+                <h3>Algoritma Seçimi</h3>
+
+                <!-- 
+                    Sosyal ağ analizi için kullanılan
+                    farklı algoritmalar burada listeleniyor.
+                -->
+                <select id="algorithmSelect" class="select-box">
+                    <option value="">Algoritma Seçin...</option>
+                    <option value="bfs">
+                        BFS (Genişlik Öncelikli Arama)
+                    </option>
+                    <option value="dfs">
+                        DFS (Derinlik Öncelikli Arama)
+                    </option>
+                    <option value="dijkstra">
+                        Dijkstra En Kısa Yol
+                    </option>
+                    <option value="welsh-powell">
+                        Welsh-Powell Renklendirme
+                    </option>
+                    <option value="degree-centrality">
+                        Degree Centrality
+                    </option>
+                </select>
+
+                <!-- 
+                    Kullanıcı bir algoritma seçtikten sonra
+                    bu buton ile algoritmayı çalıştırıyor.
+                -->
+                <button id="runAlgorithmBtn" class="btn btn-primary">
+                    <span>▶️</span> Algoritmayı Çalıştır
+                </button>
+            </div>
+
+            <!-- 
+                Bazı algoritmalar başlangıç düğümü ister.
+                Bu yüzden kullanıcıdan bir düğüm seçmesini
+                istediğim bu alanı sadece gerektiğinde gösteriyorum.
+            -->
+            <div class="control-section" id="nodeSelectorSection" style="display: none;">
+                <h3>Düğüm Seçimi</h3>
+
+                <!-- 
+                    Kullanıcıya ne yapması gerektiğini
+                    basit bir dille anlatan bilgilendirme yazısı.
+                -->
+                <p class="info-text" id="selectionInfo">
+                    Lütfen algoritmanın başlayacağı düğümü seçin
+                </p>
+
+                <!-- 
+                    Eğer kullanıcı vazgeçerse,
+                    bu buton ile seçim modundan çıkabiliyor.
+                -->
+                <button id="cancelSelectionBtn" class="btn btn-secondary">
+                    İptal
+                </button>
+            </div>
+
+            <!-- 
+                Algoritmalar çalıştırıldıktan sonra
+                elde edilen sonuçlar bu alanda gösteriliyor.
+                Örneğin ziyaret sırası, yollar veya renkler gibi.
+            -->
+            <div class="result-section">
+                <h3>Sonuçlar</h3>
+                <div id="resultDisplay" class="result-display">
+                    <p class="placeholder-text">
+                        Burada algoritmanın ürettiği
+                        sonuçları adım adım görebilirsiniz
+                    </p>
+                </div>
+            </div>
+
+            <!-- 
+                Bu bölüm ağın genel durumu hakkında
+                hızlı bilgi verir.
+                Kaç düğüm var, kaç bağlantı var gibi.
+            -->
+            <div class="stats-section">
+                <h3>İstatistikler</h3>
+                <div class="stats-grid">
+
+                    <!-- 
+                        Ağda bulunan toplam düğüm sayısını gösterir.
+                    -->
+                    <div class="stat-item">
+                        <span class="stat-label">Düğüm Sayısı:</span>
+                        <span class="stat-value" id="nodeCount">0</span>
+                    </div>
+
+                    <!-- 
+                        Düğümler arasındaki toplam bağlantı sayısını gösterir.
+                    -->
+                    <div class="stat-item">
+                        <span class="stat-label">Bağlantı Sayısı:</span>
+                        <span class="stat-value" id="edgeCount">0</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 
+                Programı ilk defa kullanan biri için
+                en temel işlemleri anlatan kısa bir rehber.
+            -->
+            <div class="help-section">
+                <h3>Kullanım Kılavuzu</h3>
+                <ul class="help-list">
+                    <li>
+                        🖱️ <strong>Canvas'a tıkla:</strong>
+                        Yeni bir düğüm oluşturur
+                    </li>
+                    <li>
+                        🔗 <strong>Düğümden sürükle:</strong>
+                        Düğümler arasında bağlantı kurar
+                    </li>
+                    <li>
+                        🎯 <strong>Düğüme çift tıkla:</strong>
+                        Seçilen düğümü siler
+                    </li>
+                    <li>
+                        ✂️ <strong>Bağlantı Sil butonu:</strong>
+                        Silme modunu aktif eder, iki düğüme tıklayarak bağlantıyı siler
+                    </li>
+                    <li>
+                        ℹ️ <strong>Düğüm Bilgisi butonu:</strong>
+                        Bilgi modunu aktif eder, düğüme tıklayarak detaylı bilgi gösterir
+                    </li>
+                    <li>
+                        🎨 <strong>Algoritma çalıştır:</strong>
+                        Ağ analizi sonuçlarını gösterir
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 
+            SAĞ PANEL
+            Burası işin görsel tarafı.
+            Sosyal ağın tamamı burada çiziliyor.
+        -->
+        <div class="right-panel">
+
+            <!-- 
+                Düğümler ve bağlantılar bu canvas üzerinde
+                JavaScript kullanılarak çiziliyor.
+            -->
+            <canvas id="graphCanvas"></canvas>
+
+            <!-- 
+                Kullanıcıya canvas ile nasıl etkileşime
+                gireceğini hatırlatan küçük bir bilgi alanı.
+            -->
+            <div class="canvas-info">
+                <p>
+                    Canvas'a tıklayarak düğüm ekleyebilir,
+                    düğümlerden sürükleyerek bağlantı oluşturabilirsiniz
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 
+        Projenin tüm JavaScript kodları bu dosyada bulunuyor.
+        Grafik çizimi ve algoritmalar burada çalışıyor.
+    -->
+    <script src="script.js"></script>
+</body>
+
+</html>
