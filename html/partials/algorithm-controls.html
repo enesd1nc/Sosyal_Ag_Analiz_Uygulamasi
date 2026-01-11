@@ -1,0 +1,30 @@
+<!-- 
+    ALGORİTMA SEÇİMİ BÖLÜMÜ
+-->
+<div class="control-section">
+    <h3>Algoritma Seçimi</h3>
+
+    <select id="algorithmSelect" class="select-box">
+        <option value="">Algoritma Seçin...</option>
+        <option value="bfs">BFS (Genişlik Öncelikli Arama)</option>
+        <option value="dfs">DFS (Derinlik Öncelikli Arama)</option>
+        <option value="dijkstra">Dijkstra En Kısa Yol</option>
+        <option value="welsh-powell">Welsh-Powell Renklendirme</option>
+        <option value="degree-centrality">Degree Centrality</option>
+    </select>
+
+    <button id="runAlgorithmBtn" class="btn btn-primary">
+        <span>▶️</span> Algoritmayı Çalıştır
+    </button>
+</div>
+
+<!-- Düğüm seçimi bölümü (gerektiğinde gösterilir) -->
+<div class="control-section" id="nodeSelectorSection" style="display: none;">
+    <h3>Düğüm Seçimi</h3>
+    <p class="info-text" id="selectionInfo">
+        Lütfen algoritmanın başlayacağı düğümü seçin
+    </p>
+    <button id="cancelSelectionBtn" class="btn btn-secondary">
+        İptal
+    </button>
+</div>

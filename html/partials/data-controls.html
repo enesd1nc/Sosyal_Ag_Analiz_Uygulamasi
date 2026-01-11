@@ -1,0 +1,22 @@
+<!-- 
+    VERİ AKTARIMI BÖLÜMÜ
+-->
+<div class="control-section">
+    <h3>Veri Aktarımı</h3>
+
+    <!-- JSON dışa aktarım -->
+    <button id="exportJsonBtn" class="btn btn-export">
+        <span>📤</span> JSON Dışa Aktar
+    </button>
+
+    <!-- CSV dışa aktarım (düğüm özellikleri) -->
+    <button id="exportCsvBtn" class="btn btn-export">
+        <span>📊</span> CSV Dışa Aktar
+    </button>
+
+    <!-- Dosya içe aktarım -->
+    <label for="importFileInput" class="btn btn-import">
+        <span>📥</span> Veri İçe Aktar
+    </label>
+    <input type="file" id="importFileInput" accept=".json,.csv" style="display: none;">
+</div>

@@ -1,0 +1,100 @@
+/* ============================================
+   ANİMASYONLU ARKA PLAN
+   Mavi-Mor Geçişli Gradient
+   ============================================ */
+
+body {
+    background: linear-gradient(-45deg,
+            #1e1b4b,
+            /* Koyu mor */
+            #312e81,
+            /* Mor */
+            #3730a3,
+            /* Indigo */
+            #4c1d95,
+            /* Mor */
+            #1e3a8a,
+            /* Koyu mavi */
+            #1e40af,
+            /* Mavi */
+            #2563eb,
+            /* Parlak mavi */
+            #4f46e5
+            /* İndigo */
+        );
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Arka plan üzerine hafif parıltı efekti */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        radial-gradient(ellipse at 20% 80%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 20%, rgba(139, 92, 246, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 40% 40%, rgba(59, 130, 246, 0.1) 0%, transparent 40%);
+    pointer-events: none;
+    z-index: -1;
+    animation: glowPulse 8s ease-in-out infinite alternate;
+}
+
+@keyframes glowPulse {
+    0% {
+        opacity: 0.5;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Yüzen parçacıklar efekti */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        radial-gradient(2px 2px at 20px 30px, rgba(255, 255, 255, 0.15), transparent),
+        radial-gradient(2px 2px at 40px 70px, rgba(255, 255, 255, 0.1), transparent),
+        radial-gradient(2px 2px at 50px 160px, rgba(255, 255, 255, 0.15), transparent),
+        radial-gradient(2px 2px at 90px 40px, rgba(255, 255, 255, 0.1), transparent),
+        radial-gradient(2px 2px at 130px 80px, rgba(255, 255, 255, 0.15), transparent),
+        radial-gradient(2px 2px at 160px 120px, rgba(255, 255, 255, 0.1), transparent);
+    background-repeat: repeat;
+    background-size: 200px 200px;
+    pointer-events: none;
+    z-index: -1;
+    animation: particleFloat 20s linear infinite;
+}
+
+@keyframes particleFloat {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(-200px);
+    }
+}

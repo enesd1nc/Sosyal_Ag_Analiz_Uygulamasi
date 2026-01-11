@@ -1,0 +1,55 @@
+/* ============================================
+   YARDIM BÖLÜMÜ
+   ============================================ */
+
+.help-section {
+    background: linear-gradient(135deg, #fef9c3 0%, #fde047 100%);
+    padding: 18px;
+    border-radius: var(--radius-sm);
+    border: 1px solid #facc15;
+}
+
+.help-section h3 {
+    font-size: 14px;
+    color: #a16207;
+    margin-bottom: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.help-section h3::before {
+    content: '💡';
+    font-size: 16px;
+}
+
+.help-list {
+    list-style: none;
+    padding: 0;
+}
+
+.help-list li {
+    padding: 10px 12px;
+    font-size: 13px;
+    color: #713f12;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 8px;
+    margin-bottom: 8px;
+    transition: all 0.2s ease;
+}
+
+.help-list li:last-child {
+    margin-bottom: 0;
+}
+
+.help-list li:hover {
+    background: rgba(255, 255, 255, 0.9);
+    transform: translateX(4px);
+}
+
+.help-list li strong {
+    color: #92400e;
+}

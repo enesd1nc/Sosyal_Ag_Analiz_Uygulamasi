@@ -1,0 +1,18 @@
+/* ============================================
+   ANA CONTAINER VE GENEL YERLEŞİM
+   ============================================ */
+
+.container {
+    display: flex;
+    gap: 24px;
+    max-width: 1700px;
+    margin: 0 auto;
+    height: calc(100vh - 48px);
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+    .container {
+        flex-direction: column;
+    }
+}

@@ -1,0 +1,181 @@
+/* ============================================
+   KART BİLEŞENLERİ
+   Control section, stat item, info cards
+   ============================================ */
+
+/* Control Section */
+.control-section {
+    background: var(--gray-50);
+    padding: 18px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--gray-200);
+    transition: all 0.3s ease;
+}
+
+.control-section:hover {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+.control-section h3 {
+    font-size: 14px;
+    color: var(--gray-600);
+    margin-bottom: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.control-section h3::before {
+    content: '';
+    width: 4px;
+    height: 16px;
+    background: linear-gradient(180deg, var(--primary), var(--secondary));
+    border-radius: 2px;
+}
+
+/* Info Text */
+.info-text {
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    color: #92400e;
+    padding: 12px 14px;
+    border-radius: 8px;
+    font-size: 13px;
+    margin-bottom: 12px;
+    border-left: 4px solid var(--warning);
+    font-weight: 500;
+}
+
+/* Message Types */
+.success-message {
+    background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+    color: #065f46;
+    padding: 14px 16px;
+    border-radius: 10px;
+    border-left: 4px solid var(--success);
+    margin-bottom: 14px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.error-message {
+    background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+    color: #991b1b;
+    padding: 14px 16px;
+    border-radius: 10px;
+    border-left: 4px solid var(--danger);
+    margin-bottom: 14px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.info-message {
+    background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
+    color: #0c4a6e;
+    padding: 14px 16px;
+    border-radius: 10px;
+    border-left: 4px solid var(--info);
+    margin-bottom: 14px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.connection-message {
+    background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+    color: #065f46;
+    padding: 14px 16px;
+    border-radius: 10px;
+    border-left: 4px solid #22c55e;
+    margin-bottom: 14px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    animation: slideIn 0.3s ease;
+}
+
+/* Result Path & Cost */
+.result-path {
+    background: var(--gray-50);
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin: 10px 0;
+    font-family: 'Fira Code', 'Consolas', monospace;
+    font-size: 14px;
+    color: var(--primary);
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-align: center;
+    border: 1px dashed var(--gray-300);
+}
+
+.result-cost {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 14px;
+    margin-top: 8px;
+}
+
+/* Result Table */
+.result-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: 12px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.result-table th,
+.result-table td {
+    padding: 12px 16px;
+    text-align: left;
+}
+
+.result-table th {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    color: white;
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.result-table td {
+    font-size: 13px;
+    color: var(--gray-700);
+    border-bottom: 1px solid var(--gray-100);
+    background: white;
+}
+
+.result-table tbody tr {
+    transition: all 0.2s ease;
+}
+
+.result-table tbody tr:hover {
+    background: var(--gray-50);
+}
+
+.result-table tbody tr:hover td {
+    background: var(--gray-50);
+}
+
+.result-table tbody tr:last-child td {
+    border-bottom: none;
+}

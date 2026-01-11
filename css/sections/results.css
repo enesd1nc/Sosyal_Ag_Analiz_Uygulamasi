@@ -1,0 +1,83 @@
+/* ============================================
+   SONUÇLAR BÖLÜMÜ
+   ============================================ */
+
+.result-section {
+    background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+    padding: 20px;
+    border-radius: var(--radius-sm);
+    border: 1px solid #a7f3d0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 200px;
+    max-height: 320px;
+    overflow: hidden;
+}
+
+.result-section h3 {
+    font-size: 14px;
+    color: var(--success-dark);
+    margin-bottom: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+.result-section h3::before {
+    content: '📊';
+    font-size: 16px;
+}
+
+.result-display {
+    background: white;
+    padding: 18px;
+    border-radius: 12px;
+    flex: 1;
+    font-size: 14px;
+    line-height: 1.7;
+    overflow-y: auto;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.06);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.result-display p {
+    margin-bottom: 10px;
+    color: var(--gray-700);
+}
+
+.result-display p:last-child {
+    margin-bottom: 0;
+}
+
+.result-display strong {
+    color: var(--dark);
+    font-weight: 600;
+}
+
+.placeholder-text {
+    color: var(--gray-400);
+    text-align: center;
+    font-size: 15px;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    gap: 8px;
+}
+
+.placeholder-text::before {
+    content: '🎯';
+    font-size: 32px;
+    opacity: 0.7;
+}
+
+.result-display>* {
+    animation: fadeIn 0.3s ease;
+}

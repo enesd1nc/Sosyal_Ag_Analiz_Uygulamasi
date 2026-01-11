@@ -1,0 +1,246 @@
+/* ============================================
+   BUTON STİLLERİ
+   Tüm buton varyasyonları
+   ============================================ */
+
+.btn {
+    width: 100%;
+    padding: 14px 20px;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.btn:hover::before {
+    left: 100%;
+}
+
+.btn:last-child {
+    margin-bottom: 0;
+}
+
+.btn span {
+    font-size: 16px;
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none !important;
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+/* Primary Button */
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    color: white;
+    box-shadow: 0 4px 14px 0 rgba(99, 102, 241, 0.4);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px 0 rgba(99, 102, 241, 0.5);
+}
+
+/* Success Button */
+.btn-success {
+    background: linear-gradient(135deg, var(--success) 0%, #34d399 100%);
+    color: white;
+    box-shadow: 0 4px 14px 0 rgba(16, 185, 129, 0.4);
+}
+
+.btn-success:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px 0 rgba(16, 185, 129, 0.5);
+}
+
+/* Danger Button */
+.btn-danger {
+    background: linear-gradient(135deg, var(--danger) 0%, #f87171 100%);
+    color: white;
+    box-shadow: 0 4px 14px 0 rgba(239, 68, 68, 0.4);
+}
+
+.btn-danger:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px 0 rgba(239, 68, 68, 0.5);
+}
+
+/* Secondary Button */
+.btn-secondary {
+    background: var(--gray-500);
+    color: white;
+    box-shadow: 0 4px 14px 0 rgba(100, 116, 139, 0.3);
+}
+
+.btn-secondary:hover {
+    background: var(--gray-600);
+    transform: translateY(-2px);
+}
+
+/* Link Button (Bağlantı Modu) */
+.btn-link {
+    background: linear-gradient(135deg, #0891b2 0%, #06b6d4 100%);
+    color: white;
+    box-shadow: 0 4px 14px 0 rgba(8, 145, 178, 0.4);
+}
+
+.btn-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px 0 rgba(8, 145, 178, 0.5);
+}
+
+.btn-link.active {
+    background: linear-gradient(135deg, #16a34a 0%, #22c55e 100%);
+    box-shadow: 0 0 20px rgba(34, 197, 94, 0.6);
+    animation: linkPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes linkPulse {
+
+    0%,
+    100% {
+        box-shadow: 0 0 20px rgba(34, 197, 94, 0.6);
+    }
+
+    50% {
+        box-shadow: 0 0 30px rgba(34, 197, 94, 0.9);
+    }
+}
+
+/* Unlink Button (Bağlantı Silme) */
+.btn-unlink {
+    background: linear-gradient(135deg, #dc2626 0%, #f87171 100%);
+    color: white;
+    box-shadow: 0 4px 14px 0 rgba(220, 38, 38, 0.4);
+}
+
+.btn-unlink:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px 0 rgba(220, 38, 38, 0.5);
+}
+
+.btn-unlink.active {
+    background: linear-gradient(135deg, #b91c1c 0%, #ef4444 100%);
+    box-shadow: 0 0 20px rgba(239, 68, 68, 0.6);
+    animation: unlinkPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes unlinkPulse {
+
+    0%,
+    100% {
+        box-shadow: 0 0 20px rgba(239, 68, 68, 0.6);
+    }
+
+    50% {
+        box-shadow: 0 0 30px rgba(239, 68, 68, 0.9);
+    }
+}
+
+/* Info Mode Button */
+.btn-info-mode {
+    background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);
+    color: white;
+    box-shadow: 0 4px 14px 0 rgba(59, 130, 246, 0.4);
+}
+
+.btn-info-mode:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px 0 rgba(59, 130, 246, 0.5);
+}
+
+.btn-info-mode.active {
+    background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.6);
+    animation: infoPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes infoPulse {
+
+    0%,
+    100% {
+        box-shadow: 0 0 20px rgba(59, 130, 246, 0.6);
+    }
+
+    50% {
+        box-shadow: 0 0 30px rgba(59, 130, 246, 0.9);
+    }
+}
+
+/* Export Button */
+.btn-export {
+    background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
+    color: white;
+    box-shadow: 0 4px 14px 0 rgba(124, 58, 237, 0.4);
+}
+
+.btn-export:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px 0 rgba(124, 58, 237, 0.5);
+}
+
+/* Import Button */
+.btn-import {
+    background: linear-gradient(135deg, #ea580c 0%, #f97316 100%);
+    color: white;
+    box-shadow: 0 4px 14px 0 rgba(234, 88, 12, 0.4);
+    cursor: pointer;
+}
+
+.btn-import:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px 0 rgba(234, 88, 12, 0.5);
+}
+
+/* Select Box */
+.select-box {
+    width: 100%;
+    padding: 14px 16px;
+    border: 2px solid var(--gray-200);
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    margin-bottom: 12px;
+    background: white;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 18px;
+}
+
+.select-box:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+}
+
+.select-box:hover {
+    border-color: var(--gray-300);
+}
