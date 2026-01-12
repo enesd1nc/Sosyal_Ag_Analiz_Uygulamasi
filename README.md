@@ -14,6 +14,7 @@
 </div>
 
 ---
+![](./Resim1.png)
 
 ## 📖 Hakkında
 
